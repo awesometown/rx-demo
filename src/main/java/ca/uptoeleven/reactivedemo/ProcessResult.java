@@ -10,6 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProcessResult {
-	private List<EntityModel> models;
+	private Iterable<EntityModel> models;
 	private long elapsedTime;
 }

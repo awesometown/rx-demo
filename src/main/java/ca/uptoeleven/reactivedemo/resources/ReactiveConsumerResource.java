@@ -59,7 +59,7 @@ public class ReactiveConsumerResource extends TimedResource {
 	class ReactiveRemoteService extends RemoteService {
 		public Observable<Integer> getIds() {
 			return RxObservable.from(idsTarget)
-					.request(MediaType.APPLICATION_JSON).rx()
+					.request().rx()
 					.get(new GenericType<List<Integer>>() {})
 					.flatMap(Observable::from);
 		}
@@ -73,7 +73,7 @@ public class ReactiveConsumerResource extends TimedResource {
 
 		public Observable<EntityModel> transformOdd(EntityModel model) {
 			return RxObservable.from(validateTarget)
-					.request(MediaType.APPLICATION_JSON).rx()
+					.request().rx()
 					.post(Entity.entity(model, MediaType.APPLICATION_JSON))
 					.map(response -> response.readEntity(EntityModel.class));
 		}

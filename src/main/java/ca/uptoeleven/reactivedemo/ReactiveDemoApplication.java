@@ -1,5 +1,6 @@
 package ca.uptoeleven.reactivedemo;
 
+import ca.uptoeleven.reactivedemo.resources.AsyncConsumerResource;
 import ca.uptoeleven.reactivedemo.resources.ReactiveConsumerResource;
 import ca.uptoeleven.reactivedemo.resources.RemoteServiceResource;
 import ca.uptoeleven.reactivedemo.resources.SerialConsumerResource;
@@ -28,9 +29,11 @@ public class ReactiveDemoApplication extends Application<ReactiveDemoConfigurati
 		final RemoteServiceResource remoteResource = new RemoteServiceResource();
 		final SerialConsumerResource serialResource = new SerialConsumerResource();
 		final ReactiveConsumerResource reactiveResource = new ReactiveConsumerResource();
+		final AsyncConsumerResource asyncResource = new AsyncConsumerResource();
 
 		environment.jersey().register(remoteResource);
 		environment.jersey().register(serialResource);
+		environment.jersey().register(asyncResource);
 		environment.jersey().register(reactiveResource);
 	}
 

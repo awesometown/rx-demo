@@ -45,19 +45,19 @@ public class SerialConsumerResource extends TimedResource {
 	class SerialRemoteService extends RemoteService {
 		public List<Integer> getIds() {
 			return idsTarget
-					.request(MediaType.APPLICATION_JSON)
+					.request()
 					.get(new GenericType<List<Integer>>() {});
 		}
 
 		public EntityModel getEntity(int id) {
 			return entityTarget.resolveTemplate("id", id)
-					.request(MediaType.APPLICATION_JSON)
+					.request()
 					.get(EntityModel.class);
 		}
 
 		public EntityModel transformOdd(EntityModel model) {
 			return validateTarget
-					.request(MediaType.APPLICATION_JSON)
+					.request()
 					.post(Entity.entity(model, MediaType.APPLICATION_JSON))
 					.readEntity(EntityModel.class);
 		}
